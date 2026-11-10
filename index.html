@@ -12,17 +12,6 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Custom scrollbar for sidebar */
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 6px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background-color: rgba(203, 213, 225, 1);
-            border-radius: 3px;
-        }
         /* Custom drag physics cursors */
         .drag-handle {
             cursor: grab;
@@ -60,10 +49,10 @@
     </header>
 
     <!-- Main Container -->
-    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 overflow-hidden">
+    <main class="flex-1 max-w-7xl w-full mx-auto p-4 md:p-6 grid grid-cols-1 lg:grid-cols-12 gap-6">
         
         <!-- Left Side: Conceptual Panels & Interactive Controls (6 cols) -->
-        <div class="lg:col-span-6 flex flex-col gap-6 overflow-y-auto custom-scrollbar pr-1 max-h-[calc(100vh-140px)]">
+        <div class="lg:col-span-6 flex flex-col gap-6">
             
             <!-- Mode / Guide Selector -->
             <div class="bg-slate-200/60 border border-slate-300/40 rounded-xl p-1 grid grid-cols-2 xl:grid-cols-4 gap-1 shadow-inner">
@@ -145,9 +134,9 @@
 
                     <!-- Step 5 Content -->
                     <div id="step-5-content" class="step-content hidden space-y-2">
-                        <h4 class="text-base font-semibold text-slate-900">5. Clearing the Fraction</h4>
+                        <h4 class="text-base font-semibold text-slate-900">5. The Point-Slope Form</h4>
                         <p class="text-sm text-slate-600 leading-relaxed">
-                            To avoid division by zero, we multiply both sides of the slope formula by the run. This yields the elegant **Point-Slope Form**:
+                            By keeping the slope ratio intact, we can represent the line in its proportional **Point-Slope Form**. This explicitly shows the relationship between the slope and any point on the line:
                         </p>
                         <div class="py-3 bg-indigo-50 border border-indigo-100 rounded-xl flex justify-center text-lg font-bold" id="math-step-5"></div>
                     </div>
@@ -156,7 +145,7 @@
                     <div id="step-6-content" class="step-content hidden space-y-2">
                         <h4 class="text-base font-semibold text-slate-900">6. Deriving Slope-Intercept Form</h4>
                         <p class="text-sm text-slate-600 leading-relaxed">
-                            By distributing the slope and isolating $y$, we transform the Point-Slope form into the widely used **Slope-Intercept form**. Here, $c$ represents the y-intercept.
+                            By clearing the fraction and isolating $y$, we transform the Point-Slope form into the widely used **Slope-Intercept form**. Here, $c$ represents the y-intercept.
                         </p>
                         <div class="py-3 bg-amber-50 border border-amber-100 rounded-xl flex justify-center text-lg font-bold" id="math-step-6"></div>
                     </div>
@@ -200,15 +189,24 @@
                         </p>
                     </div>
                     
-                    <!-- Quiz 1 Inputs (Point-Slope) -->
-                    <div id="quiz1-inputs" class="hidden flex flex-wrap items-center justify-center gap-1.5 text-sm md:text-lg font-mono bg-slate-50 p-4 rounded-xl border border-slate-200">
-                        <span id="quiz1-eq-part1" class="font-bold text-slate-800"></span>
-                        <input type="number" id="quiz1-input-y1" class="w-16 px-1 py-1 border border-slate-300 rounded text-center focus:outline-none focus:border-indigo-500" placeholder="y₁">
-                        <span id="quiz1-eq-part2" class="font-bold text-slate-800"></span>
-                        <input type="number" id="quiz1-input-m" class="w-16 px-1 py-1 border border-slate-300 rounded text-center focus:outline-none focus:border-indigo-500" placeholder="m">
-                        <span id="quiz1-eq-part3" class="font-bold text-slate-800"></span>
-                        <input type="number" id="quiz1-input-x1" class="w-16 px-1 py-1 border border-slate-300 rounded text-center focus:outline-none focus:border-indigo-500" placeholder="x₁">
-                        <span id="quiz1-eq-part4" class="font-bold text-slate-800"></span>
+                    <!-- Quiz 1 Inputs (Point-Slope Fractional Form) -->
+                    <div id="quiz1-inputs" class="hidden flex items-center justify-center gap-3 text-sm md:text-lg font-mono bg-slate-50 p-4 rounded-xl border border-slate-200">
+                        <div class="flex flex-col items-center">
+                            <div class="flex items-center gap-1 border-b-2 border-slate-400 pb-1.5 px-2">
+                                <span id="quiz1-eq-part1" class="font-bold text-slate-800"></span>
+                                <input type="number" id="quiz1-input-y1" class="w-16 px-1 py-1 border border-slate-300 rounded text-center focus:outline-none focus:border-indigo-500" placeholder="y₁">
+                                <span id="quiz1-eq-part2" class="font-bold text-slate-800"></span>
+                            </div>
+                            <div class="flex items-center gap-1 pt-1.5 px-2">
+                                <span id="quiz1-eq-part3" class="font-bold text-slate-800"></span>
+                                <input type="number" id="quiz1-input-x1" class="w-16 px-1 py-1 border border-slate-300 rounded text-center focus:outline-none focus:border-indigo-500" placeholder="x₁">
+                                <span id="quiz1-eq-part4" class="font-bold text-slate-800"></span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="font-bold text-slate-800">=</span>
+                            <input type="number" id="quiz1-input-m" class="w-16 px-1 py-1 border border-slate-300 rounded text-center focus:outline-none focus:border-indigo-500" placeholder="m">
+                        </div>
                     </div>
 
                     <!-- Quiz 2 Inputs (Slope-Intercept) -->
@@ -297,30 +295,30 @@
                 
                 <div class="space-y-3">
                     <!-- Point-Slope Form Card -->
-                    <div class="bg-indigo-50/60 p-4 rounded-xl border border-indigo-100 shadow-sm">
+                    <div class="bg-indigo-50/60 p-4 rounded-xl border border-indigo-100 shadow-sm text-center">
                         <div class="text-[10px] tracking-wider font-extrabold text-indigo-600 mb-1 flex justify-between items-center">
                             <span>POINT-SLOPE FORM</span>
                             <span id="formula-pt-slope-def" class="text-indigo-500 font-bold"></span>
                         </div>
-                        <div id="equation-point-slope" class="text-lg md:text-xl font-bold tracking-wide text-indigo-950 py-1 text-center"></div>
+                        <div id="equation-point-slope" class="text-lg font-bold tracking-wide text-indigo-950 py-1 flex justify-center items-center min-h-[3rem]"></div>
                     </div>
 
                     <!-- Slope-Intercept Card -->
-                    <div class="bg-amber-50/50 p-3 rounded-xl border border-amber-100 shadow-xs">
-                        <div class="text-[10px] tracking-wider font-extrabold text-amber-700 mb-1 flex justify-between">
+                    <div class="bg-amber-50/50 p-4 rounded-xl border border-amber-100 shadow-sm text-center">
+                        <div class="text-[10px] tracking-wider font-extrabold text-amber-700 mb-1 flex justify-between items-center">
                             <span>SLOPE-INTERCEPT</span>
                             <span id="formula-slope-int-def"></span>
                         </div>
-                        <div id="equation-slope-intercept" class="text-sm font-bold text-amber-950 mt-1"></div>
+                        <div id="equation-slope-intercept" class="text-lg font-bold tracking-wide text-amber-950 py-1 flex justify-center items-center min-h-[3rem]"></div>
                     </div>
                     
                     <!-- General Form Card -->
-                    <div class="bg-emerald-50/50 p-3 rounded-xl border border-emerald-100 shadow-xs">
-                        <div class="text-[10px] tracking-wider font-extrabold text-emerald-700 mb-1 flex justify-between">
+                    <div class="bg-emerald-50/50 p-4 rounded-xl border border-emerald-100 shadow-sm text-center">
+                        <div class="text-[10px] tracking-wider font-extrabold text-emerald-700 mb-1 flex justify-between items-center">
                             <span>GENERAL FORM</span>
                             <span id="formula-general-def"></span>
                         </div>
-                        <div id="equation-general" class="text-sm font-bold text-emerald-950 mt-1"></div>
+                        <div id="equation-general" class="text-lg font-bold tracking-wide text-emerald-950 py-1 flex justify-center items-center min-h-[3rem]"></div>
                     </div>
                 </div>
             </div>
@@ -383,6 +381,20 @@
                             <line id="triangle-run" x1="0" y1="0" x2="0" y2="0" stroke="#059669" stroke-width="2.5" stroke-dasharray="5 4" />
                             <!-- Rise (Vertical projection) -->
                             <line id="triangle-rise" x1="0" y1="0" x2="0" y2="0" stroke="#d97706" stroke-width="2.5" stroke-dasharray="5 4" />
+                            
+                            <!-- Run Overlay inside SVG for flawless scaling -->
+                            <foreignObject id="overlay-run-container" width="100" height="40" pointer-events="none">
+                                <div class="w-full h-full flex items-center justify-center">
+                                    <div id="overlay-run" class="bg-white/95 border border-emerald-200 text-emerald-700 px-1.5 py-0.5 rounded-md text-[13px] font-semibold shadow-sm text-center"></div>
+                                </div>
+                            </foreignObject>
+                            
+                            <!-- Rise Overlay inside SVG for flawless scaling -->
+                            <foreignObject id="overlay-rise-container" width="100" height="40" pointer-events="none">
+                                <div class="w-full h-full flex items-center justify-center">
+                                    <div id="overlay-rise" class="bg-white/95 border border-amber-200 text-amber-700 px-1.5 py-0.5 rounded-md text-[13px] font-semibold shadow-sm text-center"></div>
+                                </div>
+                            </foreignObject>
                         </g>
 
                         <!-- Anchor Point (x1, y1) - Sky Blue -->
@@ -402,9 +414,6 @@
                         </g>
                     </svg>
 
-                    <!-- Triangle labels overlay (HTML for KaTeX rendering) -->
-                    <div id="overlay-run" class="absolute bg-white/95 border border-emerald-200 text-emerald-700 px-2 py-1 rounded-md text-[14px] font-semibold pointer-events-none shadow-sm"></div>
-                    <div id="overlay-rise" class="absolute bg-white/95 border border-amber-200 text-amber-700 px-2 py-1 rounded-md text-[14px] font-semibold pointer-events-none shadow-sm"></div>
                 </div>
 
                 <!-- Graph Legend -->
@@ -517,7 +526,7 @@
             katex.render("y_1", document.getElementById('lbl-math-y1'), { throwOnError: false });
             katex.render("m", document.getElementById('lbl-math-m'), { throwOnError: false });
 
-            katex.render("y - y_1 = m(x - x_1)", document.getElementById('formula-pt-slope-def'), { throwOnError: false });
+            katex.render("\\frac{y - y_1}{x - x_1} = m", document.getElementById('formula-pt-slope-def'), { throwOnError: false });
             katex.render("y = mx + c", document.getElementById('formula-slope-int-def'), { throwOnError: false });
             katex.render("Ax + By + C = 0", document.getElementById('formula-general-def'), { throwOnError: false });
 
@@ -529,12 +538,12 @@
             // Quiz 1 Static Formulas
             katex.render("m", document.getElementById('quiz1-desc-m'), { throwOnError: false });
             katex.render("(x_1, y_1)", document.getElementById('quiz1-desc-p1'), { throwOnError: false });
-            katex.render("y - y_1 = m(x - x_1)", document.getElementById('quiz1-math-hint'), { throwOnError: false });
+            katex.render("\\frac{y - y_1}{x - x_1} = m", document.getElementById('quiz1-math-hint'), { throwOnError: false });
             
             katex.render("y - (", document.getElementById('quiz1-eq-part1'), { throwOnError: false });
-            katex.render(") = (", document.getElementById('quiz1-eq-part2'), { throwOnError: false });
-            katex.render(") (x - (", document.getElementById('quiz1-eq-part3'), { throwOnError: false });
-            katex.render("))", document.getElementById('quiz1-eq-part4'), { throwOnError: false });
+            katex.render(")", document.getElementById('quiz1-eq-part2'), { throwOnError: false });
+            katex.render("x - (", document.getElementById('quiz1-eq-part3'), { throwOnError: false });
+            katex.render(")", document.getElementById('quiz1-eq-part4'), { throwOnError: false });
 
             // Quiz 2 Static Formulas
             katex.render("m", document.getElementById('quiz2-desc-m'), { throwOnError: false });
@@ -967,8 +976,10 @@
                 
                 document.getElementById('quiz1-desc').classList.remove('hidden');
                 document.getElementById('quiz1-inputs').classList.remove('hidden');
+                document.getElementById('quiz1-inputs').classList.add('flex'); // Add flex back because hidden overrides it
                 document.getElementById('quiz2-desc').classList.add('hidden');
                 document.getElementById('quiz2-inputs').classList.add('hidden');
+                document.getElementById('quiz2-inputs').classList.remove('flex');
                 setTimeout(() => document.getElementById('quiz1-input-y1').focus(), 100);
             } else if (state.activeTab === 'quiz2') {
                 document.getElementById('quiz2-input-m').value = '';
@@ -976,8 +987,10 @@
                 
                 document.getElementById('quiz2-desc').classList.remove('hidden');
                 document.getElementById('quiz2-inputs').classList.remove('hidden');
+                document.getElementById('quiz2-inputs').classList.add('flex');
                 document.getElementById('quiz1-desc').classList.add('hidden');
                 document.getElementById('quiz1-inputs').classList.add('hidden');
+                document.getElementById('quiz1-inputs').classList.remove('flex');
                 setTimeout(() => document.getElementById('quiz2-input-m').focus(), 100);
             }
             
@@ -1006,7 +1019,7 @@
                 const pointOnLine = Math.abs((y1Input - state.y1) - (state.m * (x1Input - state.x1))) < 0.001;
                 
                 isCorrect = slopeCorrect && pointOnLine;
-                ansLatexStr = `y - (${fmt(state.y1)}) = ${fmt(state.m)}(x - (${fmt(state.x1)}))`;
+                ansLatexStr = `\\frac{y - (${fmt(state.y1)})}{x - (${fmt(state.x1)})} = ${fmt(state.m)}`;
                 
             } else if (state.activeTab === 'quiz2') {
                 const mInput = parseFloat(document.getElementById('quiz2-input-m').value);
@@ -1135,6 +1148,8 @@
             const slopeTriangle = document.getElementById('slope-triangle');
             const overlayRun = document.getElementById('overlay-run');
             const overlayRise = document.getElementById('overlay-rise');
+            const runContainer = document.getElementById('overlay-run-container');
+            const riseContainer = document.getElementById('overlay-rise-container');
 
             // Handle visibility for Quiz mode vs Guide mode vs Sandbox
             if (state.activeTab === 'guide' && (state.currentStep === 1 || state.currentStep === 2)) {
@@ -1143,16 +1158,12 @@
                 variablePoint.style.display = 'none';
                 variableMathLabel.style.display = 'none';
                 slopeTriangle.style.display = 'none';
-                overlayRun.style.display = 'none';
-                overlayRise.style.display = 'none';
             } else {
                 anchorPoint.style.display = 'block';
                 anchorMathLabel.style.display = 'block';
                 variablePoint.style.display = 'block';
                 variableMathLabel.style.display = 'block';
                 slopeTriangle.style.display = 'block';
-                overlayRun.style.display = 'block';
-                overlayRise.style.display = 'block';
 
                 variablePoint.setAttribute("cx", sX);
                 variablePoint.setAttribute("cy", sY);
@@ -1191,18 +1202,18 @@
                 const dx = state.x - state.x1;
                 const dy = state.y - state.y1;
 
-                // Position Run label strictly outside the dotted geometry (above or below)
-                let runIsAbove = sY >= sY1;
-                overlayRun.style.left = `${(sX1 + sX) / 2}px`;
-                overlayRun.style.top = `${runIsAbove ? sY1 - 12 : sY1 + 12}px`;
-                overlayRun.style.transform = `translate(-50%, ${runIsAbove ? '-100%' : '0'})`;
+                // Position Run label strictly outside the dotted geometry
+                let runLabelAbove = sY >= sY1;
+                let runCX = (sX1 + sX) / 2;
+                runContainer.setAttribute("x", runCX - 50); // Center the 100px wide box
+                runContainer.setAttribute("y", runLabelAbove ? sY1 - 42 : sY1 + 2);
                 katex.render(`\\Delta x = ${fmt(dx)}`, overlayRun, { throwOnError: false });
 
-                // Position Rise label strictly outside the dotted geometry (left or right)
-                let riseIsRight = sX >= sX1;
-                overlayRise.style.left = `${riseIsRight ? sX + 12 : sX - 12}px`;
-                overlayRise.style.top = `${(sY1 + sY) / 2}px`;
-                overlayRise.style.transform = `translate(${riseIsRight ? '0' : '-100%'}, -50%)`;
+                // Position Rise label strictly outside the dotted geometry
+                let riseLabelRight = sX >= sX1;
+                let riseCY = (sY1 + sY) / 2;
+                riseContainer.setAttribute("x", riseLabelRight ? sX + 2 : sX - 102);
+                riseContainer.setAttribute("y", riseCY - 20); // Center the 40px tall box
                 katex.render(`\\Delta y = ${fmt(dy)}`, overlayRise, { throwOnError: false });
             }
 
@@ -1219,7 +1230,7 @@
             const x1Val = state.x1;
             const y1Val = state.y1;
 
-            // 1. Point-Slope Form: y - y1 = m(x - x1)
+            // 1. Point-Slope Form: (y - y1) / (x - x1) = m
             let yPart = "";
             if (y1Val === 0) {
                 yPart = "y";
@@ -1238,26 +1249,9 @@
                 xPart = `x - ${fmt(x1Val)}`;
             }
 
-            let mStr = "";
-            if (mVal === 1) {
-                mStr = "";
-            } else if (mVal === -1) {
-                mStr = "-";
-            } else if (mVal === 0) {
-                mStr = "0";
-            } else {
-                mStr = fmt(mVal, 2);
-            }
-
-            let pointSlopeLatex = "";
-            if (mVal === 0) {
-                pointSlopeLatex = `${yPart} = 0`;
-            } else if (x1Val === 0) {
-                pointSlopeLatex = `${yPart} = ${mStr}x`;
-            } else {
-                pointSlopeLatex = `${yPart} = ${mStr}(${xPart})`;
-            }
-            katex.render(pointSlopeLatex, document.getElementById('equation-point-slope'), { throwOnError: false });
+            let mStrEq = fmt(mVal, 2);
+            let pointSlopeLatex = `\\frac{${yPart}}{${xPart}} = ${mStrEq}`;
+            katex.render(pointSlopeLatex, document.getElementById('equation-point-slope'), { throwOnError: false, displayMode: true });
 
             // 2. y = mx + c Form
             const cVal = y1Val - (mVal * x1Val);
@@ -1274,7 +1268,7 @@
                 }
                 slopeIntStr = `y = ${mSignStr}${cStr}`;
             }
-            katex.render(slopeIntStr, document.getElementById('equation-slope-intercept'), { throwOnError: false });
+            katex.render(slopeIntStr, document.getElementById('equation-slope-intercept'), { throwOnError: false, displayMode: true });
 
             // 3. General Form: Ax + By + C = 0
             let A = mVal;
@@ -1296,7 +1290,7 @@
             let cStr = C === 0 ? "" : (C > 0 ? ` + ${fmt(C)}` : ` - ${fmt(-C)}`);
 
             let generalLatex = `${aStr}${bStr}${cStr} = 0`;
-            katex.render(generalLatex, document.getElementById('equation-general'), { throwOnError: false });
+            katex.render(generalLatex, document.getElementById('equation-general'), { throwOnError: false, displayMode: true });
 
             // 4. Update Guided Step Equations if viewing Tour Mode
             if (state.activeTab === 'guide') {
@@ -1308,11 +1302,11 @@
                     const step4Latex = `\\displaystyle \\begin{aligned} m &= \\frac{y - y_1}{x - x_1} \\\\[0.5em] ${fmt(state.m, 2)} &= \\frac{y - (${fmt(state.y1)})}{x - (${fmt(state.x1)})} \\end{aligned}`;
                     katex.render(step4Latex, step4MathContainer, { throwOnError: false });
                 } else if (state.currentStep === 5) {
-                    const step5Latex = `\\displaystyle \\begin{aligned} y - y_1 &= m(x - x_1) \\\\[0.5em] y - (${fmt(state.y1)}) &= ${mStr}(x - (${fmt(state.x1)})) \\end{aligned}`;
+                    const step5Latex = `\\displaystyle \\begin{aligned} \\frac{y - y_1}{x - x_1} &= m \\\\[0.5em] \\frac{y - (${fmt(state.y1)})}{x - (${fmt(state.x1)})} &= ${fmt(state.m, 2)} \\end{aligned}`;
                     katex.render(step5Latex, step5MathContainer, { throwOnError: false });
                 } else if (state.currentStep === 6) {
                     // Demonstrate progression to slope-intercept form smoothly using the generated string 
-                    const step6Latex = `\\displaystyle \\begin{aligned} y - (${fmt(state.y1)}) &= ${mStr}(x - (${fmt(state.x1)})) \\\\[0.5em] ${slopeIntStr} \\end{aligned}`;
+                    const step6Latex = `\\displaystyle \\begin{aligned} \\frac{y - (${fmt(state.y1)})}{x - (${fmt(state.x1)})} &= ${fmt(state.m, 2)} \\\\[0.5em] ${slopeIntStr} \\end{aligned}`;
                     katex.render(step6Latex, step6MathContainer, { throwOnError: false });
                 }
             }
